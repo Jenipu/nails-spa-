@@ -1,0 +1,40 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "apellido_materno": "Garcia",
+            "apellido_paterno": "Ramirez",
+            "nombre": "Carlos",
+            "username": "cgarcia",
+            "password": "827ccb0eea8a706c4c34a16891f84e7b"
+        },
+        {
+            "id": 2,
+            "apellido_materno": "Nieto",
+            "apellido_paterno": "baron",
+            "nombre": "Edwin",
+            "username": "enieto",
+            "password": "e10adc3949ba59abbe56e057f20f883e"
+        }
+    ],
+    "blog": [
+        {
+            "id": 1,
+            "title": "titulo 1",
+            "content": "titulo 1",
+            "createdAt": "01/02/2014"
+        },
+        {
+            "id": 2,
+            "title": "titulo 2",
+            "content": "titulo 2",
+            "createdAt": "01/03/2014"
+        },
+        {
+            "id": 3,
+            "title": "titulo 3",
+            "content": "titulo 3",
+            "createdAt": "01/03/2014"
+        }
+    ]
+}

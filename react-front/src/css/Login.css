@@ -1,0 +1,93 @@
+* {
+    font-family: "Belleza", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 10px;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#menu i {
+    color: violet;
+    font-size: 48px;
+}
+
+.containerPrincipal {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: white;
+}
+
+.containerSecundario {
+    text-align: center;
+}
+
+.btn {
+    border: 0 !important;
+    outline: 0 !important;
+}
+
+.btn.btn-primary,
+.btn.btn-info {
+    background-color: pink;
+    color: black
+}
+
+.btn-primary:hover {
+    background-color: blueviolet !important;
+}
+
+.btn-danger {
+    background-color: violet !important;
+}
+
+.btn-info:hover {
+    background-color: pink !important;
+}
+
+.fa-solid.fa-hand-sparkles {
+    color: violet;
+    font-size: 48px;
+    margin: 40px auto;
+}
+
+td {
+    background-color: white !important;
+}
+
+thead tr th {
+    background-color: violet !important;
+    color: white !important;
+}
+
+tbody tr:nth-child(even) {
+    background: white !important;
+}
+
+tbody tr:nth-child(odd) {
+    background: gainsboro !important;
+}
+
+.btn-cerrar-sesion {
+    border: 0 !important;
+    outline: 0 !important;
+    background-color: white;
+
+}
+
+td i,
+button i {
+    color: black
+}
