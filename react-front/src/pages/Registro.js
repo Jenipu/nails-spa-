@@ -1,88 +1,109 @@
-import React, { Component } from 'react';
+import React, { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import md5 from 'md5';
+import axios from 'axios';
+
 import '../css/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
-import md5 from 'md5';
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 
-const baseUrl = "http://localhost:3001/usuarios";
-const cookies = new Cookies();
+const APIUrl = "http://localhost:8000/blogs";
+// const cookies = new Cookies();
 
+const CompRegistro = () => {
+    const [nombre, setNombre] = useState('')
+    const [username, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+    const [apellido_paterno, setApellidoPaterno] = useState('')
+    const [apellido_materno, setApellidoMaterno] = useState('')
+    const navigate = useNavigate()
 
-class Registro extends Component {
-    state = {
-        form: {
-            username: '',
-            password: ''
-        }
+    // procedimiento guardar
+    const store = async (e) => {
+        e.preventDefault()
+        await axios.post(APIUrl, { 
+            nombre: nombre,
+            username: username,
+            password: md5(),
+            apellido_paterno: apellido_paterno,
+            apellido_materno: apellido_materno,
+
+        })
+        navigate('/')
     }
+    return (
+        <div>
+            
+            <div className="containerPrincipal">
+                <div className="containerSecundario">
+                    <h1>Vista CREAR</h1>
+                    <form onSubmit={store}>
+                        <div className="mb-3">
+                            <label className='form-label'>
+                                Nombre
+                            </label>
+                            <input
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
 
-    handleChange = async e => {
-        await this.setState({
-            form: {
-                ...this.state.form,
-                [e.target.name]: e.target.value
-            }
-        });
-        console.log(this.state.form)
-    }
+                        </div>
+                        <div className="mb-3">
+                            <label className='form-label'>
+                                Username
+                            </label>
+                            <input
+                                value={username}
+                                onChange={(e) => setUserName(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
 
-    agregarRegistro = async () => {
-        await axios.post(baseUrl, { params: { username: this.state.form.username, password: md5(this.state.form.password) } })
-            .then(response => {
-                return response.data
-            })
-            .then(response => {
-                console.log(response.data);
-                var respuesta = response[0];
+                        </div>
+                        <div className="mb-3">
+                            <label className='form-label'>
+                                Password
+                            </label>
+                            <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="password"
+                                className="form-control"
+                            />
 
-                if (response.length > 0) {
-                    cookies.set('id', respuesta.id, { path: "/" });
-                    cookies.set('apellido_paterno', respuesta.apellido_paterno, { path: "/" });
-                    cookies.set('apellido_materno', respuesta.apellido_materno, { path: "/" });
-                    cookies.set('nombre', respuesta.nombre, { path: "/" });
-                    alert(`Bienvenido' ${respuesta.nombre} ${respuesta.apellido_materno}`);
-                    window.location.href = "./menu"
+                        </div>
+                        <div className="mb-3">
+                            <label className='form-label'>
+                                Apellido materno
+                            </label>
+                            <input
+                                value={apellido_materno}
+                                onChange={(e) => setApellidoMaterno(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
 
-                }
-                else {
-                    alert('El usuario o contraseña no son correctos');
+                        </div>
+                        <div className="mb-3">
+                            <label className='form-label'>
+                                Apellido paterno
+                            </label>
+                            <input
+                                value={apellido_paterno}
+                                onChange={(e) => setApellidoPaterno(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
 
-                }
-
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-
-    componentDidMount() {
-        if (cookies.get('username')) {
-
-            window.location.href = "./menu"
-        }
-    }
-
-    render() {
-        return (
-            <div className='containerPrincipal'>
-                <div className='containerSecundario'>
-                    <div className="form-group">
-                        <label>Usuario: </label> <br />
-                        <input type="text" className='form-control' name='username' onChange={this.handleChange} />
-                        <br />
-                        <label>Contraseña </label>
-                        <br />
-                        <input type="password" className='form-control' name='password' onChange={this.handleChange} />
-                        <br />
-                        <button className='btn btn-primary' onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
-
-
-                    </div>
-                </div >
-            </div >
-        )
-    }
+                        </div>
+                        <button className='btn btn-primary' type="submit">AGREGAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
 }
 
-export default Registro;
+export default CompRegistro;

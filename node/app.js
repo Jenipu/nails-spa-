@@ -14,7 +14,7 @@ app.use('/users', routerUser)
 
 try {
     await db.authenticate()
-    console.log('Conexion exitosa a DBcita')
+    console.log('Conexion exitosa a DB')
 }
 catch (error) {
     console.log(`El error de la conexión es : ${error}`)

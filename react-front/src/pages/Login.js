@@ -6,9 +6,8 @@ import axios from 'axios';
 import md5 from 'md5';
 import Cookies from 'universal-cookie';
 
-const baseUrl = "http://localhost:8000/users";
+const APIUrl = "http://localhost:8000/users";
 const cookies = new Cookies();
-
 
 class Login extends Component {
     state = {
@@ -29,7 +28,7 @@ class Login extends Component {
     }
 
     iniciarSesion = async () => {
-        await axios.get(baseUrl, { params: { username: this.state.form.username, password: md5(this.state.form.password) } })
+        await axios.get(APIUrl, { params: { username: this.state.form.username, password: md5(this.state.form.password) } })
             .then(response => {
                 return response.data
             })
@@ -43,7 +42,7 @@ class Login extends Component {
                     cookies.set('apellido_materno', respuesta.apellido_materno, { path: "/" });
                     cookies.set('nombre', respuesta.nombre, { path: "/" });
                     alert(`Bienvenido' ${respuesta.nombre} ${respuesta.apellido_materno}`);
-                    window.location.href = "./blogs"
+                    window.location.href = "./dashboard"
 
                 }
                 else {
@@ -60,7 +59,7 @@ class Login extends Component {
     componentDidMount() {
         if (cookies.get('username')) {
 
-            window.location.href = "./blogs"
+            window.location.href = "./dashboard"
         }
     }
 
@@ -80,10 +79,12 @@ class Login extends Component {
                         <br />
                         <input type="password" className='form-control' name='password' onChange={this.handleChange} />
                         <br />
+                        
                         <button className='btn btn-primary' onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
 
-
+            
                     </div>
+                    <div>¿No tienes una cuenta? <button><a href="./registro">Regístrate</a></button></div>
                 </div >
             </div >
         )

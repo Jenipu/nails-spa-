@@ -17,7 +17,7 @@ function Rutas() {
         <Route exact path="/menu" element={<Menu />} />
         <Route exact path="/registro" element={<Registro />} />
         <Route exact path="/crear" element={<CompCreateBlog />} />
-        <Route exact path="/blogs" element={<CompShowBlogs />} />
+        <Route exact path="/dashboard" element={<CompShowBlogs />} />
         <Route exact path="/edit/:id" element={<CompEditBlogs />} />
         {/* <Route exact path="/registro" element={<CompShowBlogs />} /> */}
       </Routes>
