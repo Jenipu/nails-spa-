@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import Menu from '../pages/Menu';
 
 
-const URI = 'http://localhost:8000/blogs/';
+const UriBlog = 'http://localhost:8000/blogs';
+
 
 const CompShowBlogs = () => {
     const [blogs, setBlog] = useState([])
@@ -14,12 +15,12 @@ const CompShowBlogs = () => {
 
     // Procedimiento para mostrar todos los blogs
     const getBlogs = async () => {
-        const res = await axios.get(URI)
+        const res = await axios.get(UriBlog)
         setBlog(res.data)
     }
     const deleteBlog = async (id) => {
         getBlogs()
-        axios.delete(`${URI}${id}`)
+        axios.delete(`${UriBlog}${id}`)
         getBlogs()
     }
 
@@ -28,8 +29,8 @@ const CompShowBlogs = () => {
             <Menu />
             <div className='containerPrincipal'>
                 <div className='containerSecundario'>
-                    <Link to="/crear" className='btn btn-primary mt-2 mb-2'><i class="fas fa-plus"></i> Agregar Post</Link>
-                    <div className='table'>
+                    <Link to="/crear" className='btn btn-primary mt-2 mb-2'><i className="fas fa-plus"></i> Agregar Post</Link>
+                    <table className='table'>
                         <thead className='table-primary'>
                             <tr>
                                 <th>Title</th>
@@ -55,7 +56,7 @@ const CompShowBlogs = () => {
                                 )
                             }
                         </tbody>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>

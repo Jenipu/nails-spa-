@@ -1,9 +1,9 @@
 // Sequelize.define}
-import userdb from "../database/db.js";
+import db_usuarios from "../database/db_usuarios.js";
 // Importamos la conexión a db
 import { DataTypes } from "sequelize";
 
-const UserModel = userdb.define('users', {
+const UserModel = db_usuarios.define('users', {
     id: {type: DataTypes.INTEGER , primaryKey: true},
     apellido_materno: { type: DataTypes.STRING },
     apellido_paterno: { type: DataTypes.STRING },

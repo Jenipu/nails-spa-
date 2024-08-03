@@ -1,6 +1,5 @@
 import express from 'express'
-import { getAllBlogs, getBlog, createBlog, updateBlog, deleteBlog} from '../controllers/BlogController.js'
-
+import { getAllBlogs, getBlog, createBlog, updateBlog, deleteBlog } from '../controllers/BlogController.js'
 const router = express.Router()
 
 router.get('/', getAllBlogs)

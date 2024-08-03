@@ -91,3 +91,8 @@ td i,
 button i {
     color: black
 }
+
+#menu img {
+    width: 150px;
+    height: auto;
+}

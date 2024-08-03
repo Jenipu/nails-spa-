@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import db from "./database/db.js"
+import db_blogs from "./database/db_blogs.js"
+import db_usuarios from "./database/db_usuarios.js"
 
 import blogRoutes from './routes/routes.js'
 import routerUser from './routes/userRoutes.js'
@@ -13,8 +14,15 @@ app.use('/blogs', blogRoutes)
 app.use('/users', routerUser)
 
 try {
-    await db.authenticate()
-    console.log('Conexion exitosa a DB')
+    await db_blogs.authenticate()
+    console.log('Conexion exitosa a DB blogs')
+}
+catch (error) {
+    console.log(`El error de la conexión es : ${error}`)
+}
+try {
+    await db_usuarios.authenticate()
+    console.log('Conexion exitosa a DB usuarios')
 }
 catch (error) {
     console.log(`El error de la conexión es : ${error}`)

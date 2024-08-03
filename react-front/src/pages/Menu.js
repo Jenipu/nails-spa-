@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import logo from '../img/logo.png'
 
 const cookies = new Cookies();
 
@@ -27,7 +28,7 @@ class Menu extends Component {
 
         return (
             <div id='menu'>
-                <i class="fa fa-bars"></i>
+                <img src={logo} alt="logo"/>
                 <br />
                 <button className='btn-cerrar-sesion' onClick={() => this.cerrarSesion()}>
                     <i className="fas fa-sign-out"></i>
@@ -39,4 +40,4 @@ class Menu extends Component {
 
 
 
-export default Menu;
+export default Menu
