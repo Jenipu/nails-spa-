@@ -1,48 +1,32 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/Login.css'
-import axios from 'axios';
-import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import axios from "axios";
+import { useState } from "react";
+import React, { useNavigate } from "react-router-dom";
 import Menu from '../pages/Menu';
 
 
+const URI = 'http://localhost:8000/servicios/'
 
-const URI = 'http://localhost:8000/blogs/';
-
-const CompEditBlogs = () => {
+const CompCreateService = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const navigate = useNavigate()
-    const { id } = useParams()
 
-    const update = async (e) => {
+    // procedimiento guardar
+    const store = async (e) => {
         e.preventDefault()
-        await axios.put(URI + id, {
-            title: title,
-            content: content
-        })
-        navigate('/blogs')
+        await axios.post(URI, { title: title, content: content })
+        navigate('/dashboard-service')
     }
-    useEffect(() => {
-        getBlogById()
-    })
-
-    const getBlogById = async () => {
-        const res = await axios.get(URI + id)
-        setTitle(res.data.title)
-        setContent(res.data.content)
-    }
-
     return (
         <div>
             <Menu />
-            <div className='containerPrincipal'>
-                <div className='containerSecundario'>
-                    <h1>Vista EDITAR</h1>
-                    <form onSubmit={update}>
+            <div className="containerPrincipal">
+                <div className="containerSecundario">
+                    <h1>Crear Servicio </h1>
+                    <form onSubmit={store}>
                         <div className="mb-3">
                             <label className='form-label'>
-                                Title
+                                Servicio
                             </label>
                             <input
                                 value={title}
@@ -54,7 +38,7 @@ const CompEditBlogs = () => {
                         </div>
                         <div className="mb-3">
                             <label className='form-label'>
-                                Contents
+                                Descripción
                             </label>
                             <input
                                 value={content}
@@ -68,10 +52,8 @@ const CompEditBlogs = () => {
                     </form>
                 </div>
             </div>
-
-
         </div>
     )
 }
 
-export default CompEditBlogs
+export default CompCreateService

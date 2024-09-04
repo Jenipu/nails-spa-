@@ -1,11 +1,11 @@
 // Sequelize.define}
-import db_blogs from "../database/db_blogs.js";
+import db_servicios from "../database/db_servicios.js";
 // Importamos la conexión a db
 import { DataTypes } from "sequelize";
 
-const BlogModel = db_blogs.define('blogs', {
+const ServicioModel = db_servicios.define('servicios', {
     title: { type: DataTypes.STRING },
     content: { type: DataTypes.STRING }
 })
 
-export default BlogModel
+export default ServicioModel

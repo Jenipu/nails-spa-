@@ -1,44 +1,41 @@
 
 
 //  importamos el modelo
-import BlogModel from "../models/UserModel.js"
+import AgendaModel from "../models/AgendaModel.js"
 
 //  metodos para el CRUD
 
 // Mostrar todos los registros 
-export const getAllBlogs = async (req, res) => {
+export const getAllAgendas = async (req, res) => {
     try {
-        const blogs = await BlogModel.findAll();
-        res.json(blogs)
+        const agendas = await AgendaModel.findAll();
+        res.json(agendas)
 
     } catch (error) {
         res.json({ message: error.message })
     }
 }
-
-//  Mostrar un registro
-export const getBlog = async (req, res) => {
+export const getAgenda = async (req, res) => {
     try {
-        const blog = await BlogModel.findAll({
+        const agenda = await AgendaModel.findAll({
             where: {
                 id: req.params.id
             }
         })
 
-        res.json(blog[0]);
+        res.json(agenda[0]);
 
 
     } catch (error) {
         res.json({ message: error.message })
     }
 }
-
 //  crear un registro
-export const createBlog = async (req, res) => {
+export const createAgenda = async (req, res) => {
     try {
-        await BlogModel.create(req.body)
+        await AgendaModel.create(req.body)
         res.json({
-            "message": "Registro creado exitosamente! "
+            "message": "Agenda creado exitosamente! "
         })
     } catch (error) {
         res.json({ message: error.message })
@@ -46,9 +43,9 @@ export const createBlog = async (req, res) => {
 }
 
 //  actualizar un registro
-export const updateBlog = async (req, res) => {
+export const updateAgenda = async (req, res) => {
     try {
-        await BlogModel.update(req.body, {
+        await AgendaModel.update(req.body, {
             where: { id: req.params.id }
         })
         res.json({
@@ -61,9 +58,9 @@ export const updateBlog = async (req, res) => {
 
 // Eliminar un registro
 
-export const deleteBlog = async (req, res) => {
+export const deleteAgenda = async (req, res) => {
     try {
-        await BlogModel.destroy({
+        await AgendaModel.destroy({
             where: { id: req.params.id }
         })
         res.json({
@@ -73,4 +70,5 @@ export const deleteBlog = async (req, res) => {
         res.json({ message: error.message })
     }
 }
+
 

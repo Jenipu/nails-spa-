@@ -42,7 +42,7 @@ class Login extends Component {
                     cookies.set('apellido_materno', respuesta.apellido_materno, { path: "/" });
                     cookies.set('nombre', respuesta.nombre, { path: "/" });
                     alert(`Bienvenido' ${respuesta.nombre} ${respuesta.apellido_materno}`);
-                    window.location.href = "./dashboard"
+                    window.location.href = "./main"
 
                 }
                 else {
@@ -79,10 +79,10 @@ class Login extends Component {
                         <br />
                         <input type="password" className='form-control' name='password' onChange={this.handleChange} />
                         <br />
-                        
+
                         <button className='btn btn-primary' onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
 
-            
+
                     </div>
                     <div>¿No tienes una cuenta? <button><a href="./registro">Regístrate</a></button></div>
                 </div >

@@ -1,13 +1,13 @@
-import React, { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import md5 from 'md5';
 import axios from 'axios';
+import { useState } from "react";
+import React, { useNavigate } from "react-router-dom";
+import md5 from 'md5';
 
 import '../css/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Cookies from 'universal-cookie';
 
-const APIUrl = "http://localhost:8000/blogs";
+const APIUrl = "http://localhost:8000/users/";
 // const cookies = new Cookies();
 
 const CompRegistro = () => {
@@ -21,10 +21,10 @@ const CompRegistro = () => {
     // procedimiento guardar
     const store = async (e) => {
         e.preventDefault()
-        await axios.post(APIUrl, { 
+        await axios.post(APIUrl, {
             nombre: nombre,
             username: username,
-            password: md5(),
+            password: md5(password),
             apellido_paterno: apellido_paterno,
             apellido_materno: apellido_materno,
 
@@ -33,7 +33,7 @@ const CompRegistro = () => {
     }
     return (
         <div>
-            
+
             <div className="containerPrincipal">
                 <div className="containerSecundario">
                     <h1>Vista CREAR</h1>
@@ -98,7 +98,7 @@ const CompRegistro = () => {
                             />
 
                         </div>
-                        <button className='btn btn-primary' type="submit">AGREGAR</button>
+                        <button className='btn btn-primary' type="submit">¡REGISTRARME!</button>
                     </form>
                 </div>
             </div>

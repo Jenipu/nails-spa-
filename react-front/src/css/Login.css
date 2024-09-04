@@ -32,6 +32,11 @@
 
 .containerSecundario {
     text-align: center;
+    width: 500px;
+}
+
+.fa-rotate-left {
+    font-size: 20px !important;
 }
 
 .btn {
@@ -42,7 +47,7 @@
 .btn.btn-primary,
 .btn.btn-info {
     background-color: pink;
-    color: black
+    color: black;
 }
 
 .btn-primary:hover {
