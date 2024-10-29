@@ -21,9 +21,9 @@
 }
 
 .containerPrincipal {
+    margin-top: 150px;
     display: flex;
     flex-direction: row;
-    height: 100vh;
     justify-content: center;
     align-items: center;
     padding: 40px;
@@ -100,4 +100,17 @@ button i {
 #menu img {
     width: 150px;
     height: auto;
+}
+
+/* Estilos index */
+
+
+.containerPrincipal .servicio-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.card-img-top {
+    max-width: 200px;
 }

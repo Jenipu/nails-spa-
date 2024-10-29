@@ -41,7 +41,7 @@ class Login extends Component {
                     cookies.set('apellido_paterno', respuesta.apellido_paterno, { path: "/" });
                     cookies.set('apellido_materno', respuesta.apellido_materno, { path: "/" });
                     cookies.set('nombre', respuesta.nombre, { path: "/" });
-                    alert(`Bienvenido' ${respuesta.nombre} ${respuesta.apellido_materno}`);
+                    alert(`Bienvenido' ${respuesta.nombre} ${respuesta.apellido_paterno}`);
                     window.location.href = "./main"
 
                 }

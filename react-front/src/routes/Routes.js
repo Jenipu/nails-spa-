@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Landing from '../pages/Landing';
 import Login from '../pages/Login';
 import Menu from '../pages/Menu';
 import Registro from '../pages/Registro';
@@ -17,7 +18,8 @@ function Rutas() {
 
       <Routes>
 
-        <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path="/menu" element={<Menu />} />
         <Route exact path="/registro" element={<Registro />} />
         <Route exact path="/main" element={<Main />} />
