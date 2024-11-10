@@ -5,7 +5,7 @@ export const getUsers = async (req, res) => {
   try {
     const excludeUserAttributes = ['password']
     const users = await UserService.getUsersList(excludeUserAttributes)
-    res.json({ status: "success", data: users })
+    res.json({status: "success", data: users})
 
   } catch (error) {
     logError(JSON.stringify(error))
@@ -24,7 +24,7 @@ export const getUser = async (req, res) => {
       return res.status(404).json({ status: "error", error: { code: '76dd5ae4-c9a2-4254-96da-7b1005375f89', message: 'User not found!' } })
     }
 
-    res.json({ status: "success", data: userFound })
+    res.json({status: "success", data: userFound})
 
   } catch (error) {
     logError(error)
@@ -36,9 +36,9 @@ export const getUserAppointments = async (req, res) => {
   try {
     const { id } = req.params
 
-    const { default: userModel } = await import('../my-models/user.model.js')
-    const { default: workerServiceModel } = await import('../my-models/worker_services.model.js')
-    const { default: serviceModel } = await import('../my-models/service.model.js')
+    const { default: userModel} = await import('../my-models/user.model.js')
+    const { default: workerServiceModel} = await import('../my-models/worker_services.model.js')
+    const { default: serviceModel} = await import('../my-models/service.model.js')
     const conditions = {
       where: {
         client_id: id,
@@ -67,7 +67,7 @@ export const getUserAppointments = async (req, res) => {
       return res.status(404).json({ status: "error", error: { code: 'bb22f730-8e37-4824-b152-9f37454c9c85', message: 'User not found!' } })
     }
 
-    res.json({ status: "success", data: userAppointmentsFound })
+    res.json({status: "success", data: userAppointmentsFound})
 
   } catch (error) {
     console.log(error)
@@ -79,7 +79,7 @@ export const createUser = async (req, res) => {
   try {
     const { body } = req
 
-    const userPropsToFilter = { email: body.email }
+    const userPropsToFilter = {email: body.email}
     const userFound = await UserService.getUserByProps(userPropsToFilter)
 
     if (userFound) {

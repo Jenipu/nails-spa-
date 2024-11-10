@@ -92,9 +92,14 @@ async function seedDemoData() {
     logSuccess('Seed demo data has finished!.')
 
   } catch (error) {
-    // console.error(error)
+    console.error(error)
     throw new Error({ cause: 'Seed demo data', message: error.original.sqlMessage })
   }
 }
 
-seedDemoData()
+try {
+  seedDemoData()
+} catch (error) {
+  console.log("ERROR SEEDING DATA")
+  console.log(error)
+}

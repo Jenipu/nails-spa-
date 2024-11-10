@@ -8,7 +8,7 @@ export const login = async (req, res) => {
   try {
     const { email, password: inputPassword } = req.body
 
-    const userFound = await UserService.getUserByProps({email})
+    const userFound = await UserService.getUserByProps({ email })
 
     if (!userFound) {
       return res.status(404).json({ status: "error", error: { code: 'c42e2aef-d3d9-49d9-911c-bd84da13b07f', message: 'Bad credentials' } })
@@ -25,7 +25,15 @@ export const login = async (req, res) => {
     const userFoundJson = userFound.toJSON()
     const { password, ...userLoggedin } = userFoundJson
 
-    res.cookie('token', token).json({ status: "success", data: userLoggedin });
+    res.cookie(
+      'token',
+      token,
+      {
+        httpOnly: process.env.NODE_ENV !== "development",
+        secure: true,
+        sameSite: "none",
+      }
+    ).json({ status: "success", data: userLoggedin });
 
   } catch (error) {
     logError(error)
@@ -55,8 +63,15 @@ export const signUp = async (req, res) => {
     const createdUserJson = createdUser.toJSON()
     const { password, ...createdUserToRetrive } = createdUserJson
 
-
-    res.cookie('token', token).json({ status: "success", data: createdUserToRetrive });
+    res.cookie(
+      'token',
+      token,
+      {
+        httpOnly: process.env.NODE_ENV !== "development",
+        secure: true,
+        sameSite: "none",
+      }
+    ).json({ status: "success", data: createdUserToRetrive });
 
   } catch (error) {
     logError(error)
@@ -66,8 +81,8 @@ export const signUp = async (req, res) => {
 
 export const logOut = async (req, res) => {
   try {
-    res.cookie('token', "", {expires: new Date(0)})
-    res.json({status: "success", data: "Logout successfully!."})
+    res.cookie('token', "", { expires: new Date(0) })
+    res.json({ status: "success", data: "Logout successfully!." })
 
   } catch (error) {
     console.log(error)
