@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dotenv.dotenv-vscode",
+    "mikestead.dotenv",
+    "rapidapi.vscode-services",
+    "rapidapi.vscode-rapidapi-client",
+    "esbenp.prettier-vscode",
+    "cweijan.vscode-mysql-client2",
+    "ms-azuretools.vscode-docker",
+    "cweijan.dbclient-jdbc",
+    "mikehanson.auto-barrel"
+  ]
+}

@@ -1,0 +1,10 @@
+name: nailsspadbd
+
+services:
+  nailsspadb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+    ports:
+      - ${DB_PORT}:3306

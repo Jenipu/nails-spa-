@@ -1,0 +1,35 @@
+{
+  "name": "nails-spa-api",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "gen:tables": "node db-generator/index.js",
+    "seed:demos": "node db-generator/seeder.js",
+    "gen:seed": "pnpm run gen:tables && pnpm run seed:demos",
+    "gen:seed:railway": "npm run gen:tables && npm run seed:demos",
+    "dev": "node src/index.js",
+    "dev:watch": "node --watch src/index.js",
+    "start": "npm run gen:seed:railway && node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "cookie-parser": "1.4.7",
+    "cors": "2.8.5",
+    "dotenv": "16.4.5",
+    "express": "4.21.1",
+    "jsonwebtoken": "9.0.2",
+    "morgan": "1.10.0",
+    "mysql2": "3.11.3",
+    "sequelize": "6.37.5"
+  },
+  "devDependencies": {
+    "colors": "1.4.0",
+    "sequelize-cli": "6.6.2"
+  }
+}
