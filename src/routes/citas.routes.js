@@ -5,7 +5,7 @@ import { ROLES } from '../constants/index.js'
 
 const citasRouter = Router()
 
-citasRouter.get('/appointments', authenticated, authorized([ROLES.ADMIN,ROLES.WORKER, ROLES.CLIENT]), getAppointments)
+citasRouter.get('/appointments', authenticated, authorized([ROLES.ADMIN]), getAppointments)
   .get('/appointments/:id', authenticated, authorized([ROLES.ADMIN, ROLES.WORKER, ROLES.CLIENT]), getAppointment)
   .post('/appointments', authenticated, authorized([ROLES.ADMIN, ROLES.WORKER, ROLES.CLIENT]), createAppointment)
   .patch('/appointments/:id', authenticated, authorized([ROLES.ADMIN]), updateAppointment)
