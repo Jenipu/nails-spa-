@@ -24,9 +24,10 @@ const seedDemoUser = async () => {
 const seedDemoService = async () => {
   try {
     const demoService = {
-      name: "MANICURE",
-      description: "La manicura, maniquiur, manicure, o manicur, es un método de cuidado, pintura y embellecimiento para las uñas y manos que suele realizarse en casa o en un salón de belleza.",
-      imageUrl: "https://i.pinimg.com/564x/64/c9/6c/64c96ce9c3ca7ac2104c753cada67019.jpg",
+        "name": "UÑAS ARTE",
+        "description": "El Nail art está de moda, ¡todas las famosas lo llevan! Se trata de realizar dibujos en las uñas de manera original y combinándolo con los colores de tu ropa.",
+        "imageUrl": "https://i.pinimg.com/236x/b8/d8/d4/b8d8d4592c47b3ca890d778a6c79e3fb.jpg",
+        "rating": 5,
     }
 
     const demoServiceCreated = await ServiceModel.create(demoService)
