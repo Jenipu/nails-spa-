@@ -1,7 +1,7 @@
 import { ROLES } from '../constants/index.js'
 import { UserService } from '../services/index.js'
 
-export const authorized = (authorizedRoles = [ROLES.ADMIN, ROLES.CLIENT, ROLES.WORKER]) => async (req, res, next) => {
+export const authorized = (authorizedRoles = [ROLES.ADMIN]) => async (req, res, next) => {
   try {
     const authUserId = req.authUser
     if (!authUserId) return res.status(401).json({ status: "error", error: { code: 'c0c1ec1a-4849-4964-b8e5-e53bd3dcea29', message: "Unauthorized!." }})
